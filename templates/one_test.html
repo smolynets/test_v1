@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+
+
+{% block content %}
+
+<div class="row col-xs-8 col-xs-offset-2">
+
+</div>
+{{ test.name }}
+{{ ch }}
+</div>
+<form action="." method="post" enctype="multipart/form-data"
+      role="form" class="form-horizontal">
+      {% csrf_token %}
+<!--start tests listing-->
+{% if personal %}
+
+<div class="form-group">
+  <div class="col-sm-10">
+    <input type="text" value="{{ request.POST.name }}"
+    name="name" class="form-control" placeholder='Введіть ваше імя'/>
+     <span class="help-block">{{ errors.name }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-10">
+    <input type="text" value="{{ request.POST.surname }}"
+    name="surname" class="form-control" placeholder='Введіть ваше прізвище'/>
+     <span class="help-block">{{ errors.surname }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label"></label>
+  <div class="col-sm-10">
+  <input type="submit" value="Додати" name="next"
+    class="btn btn-primary" />
+  </div>
+  </div>
+  <input type="hidden" value="{{ 1 }}"
+    name="count" class="form-control" />
+
+{% else %}
+
+{{ one_test.description}}
+<div class="row col-xs-8 col-xs-offset-2">
+    
+    <div class="row">
+        <p class="size"><input type="checkbox" name="1a" value="a"> {{ one_test.version_a}}</p>
+    </div>
+    <div class="row">
+        <p class="size"><input type="checkbox" name="1b" value="b"> {{ one_test.version_b}}</p>
+    </div>
+    <div class="row">
+        <p class="size"><input type="checkbox" name="1c" value="c"> {{ one_test.version_c}}</p>
+    </div>
+    <div class="row">
+        <p class="size"><input type="checkbox" name="1d" value="d"> {{ one_test.version_d}}</p>
+    </div>
+    
+    <input type="hidden" value="{{ num }}"
+      name="test_num" class="form-control" />
+    <input type="hidden" value="{{ result_test }}"
+      name="result_test" class="form-control" />
+      <input type="hidden" value="{{ name }}"
+      name="name" class="form-control" />
+      <input type="hidden" value="{{ surname }}"
+      name="surname" class="form-control" />
+      <input type="hidden" value="{{ answers }}"
+      name="answers" class="form-control" />
+    
+</div>
+<!-- End tests Listing -->
+<div class="form-group">
+  <label class="col-sm-2 control-label"></label>
+  <div class="col-sm-10">
+  <input type="submit" value="Додати" name="next"
+    class="btn btn-primary" />
+  </div>
+  </div>
+  resalt {{ result_test }}
+  Кількість питань{{ qn }}
+  {{ name }}
+  {{ surname }}
+  номер питання {{ n }}
+  {% endif %}
+</form>
+
+{% endblock content %}
+
+  
+
+
+  	
