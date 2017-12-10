@@ -113,7 +113,6 @@ def one_test(request, pk):
 						answers = ans + '' + a 	
 				else:
 					answers = a	
-				print (answers)	
 				if result == 1:
 					num = int(num) + 1
 					result_test = result_test + 1
@@ -148,6 +147,13 @@ def one_test(request, pk):
 							 'name': name, 'surname': surname,
 							  'qn': qn, 'n': n, 'answers': answers})
 					else:
+						data = {}
+						data['name'] = name
+						data['surname'] = surname
+						data['rating'] = result_test
+						data['choices'] = answers
+						result = Result(**data)
+						result.save()
 						n = num + 1	
 						return render(request, 'finish.html',
 						 {'result_test': result_test,
