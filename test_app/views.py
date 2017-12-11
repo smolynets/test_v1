@@ -168,3 +168,9 @@ def one_test(request, pk):
 		personal = 1		
 		return render(request, 'one_test.html', {
 			'test': test, 'personal': personal})
+
+
+########################333
+def results(request):
+  results = Result.objects.get_queryset().all()
+  return render(request, 'tests_list.html', {'results':results})

@@ -6,6 +6,9 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+{% endif %}
+
 <!-- tests Listing -->
 {% for tst in tests %}
 <div class="question_block_main">

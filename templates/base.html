@@ -15,9 +15,33 @@
   <body class="body">
 
 
+{% if user.is_authenticated %}
+  <!-- <div class='col-md-3 registration'>
+     {% if user.is_authenticated %}
+        <a href='{% url 'users:auth_logout' %}'>{% trans "Вийти" %}</a>
+     {% else %}
+        <a href='{% url 'users:auth_login' %}'>{% trans "Ввійти" %}</a>
+        |
+        <a href='{% url "users:registration_register" %}'>{% trans "Зареєструватися" %}</a>
+     {% endif %}
+   </div> -->
+   <!-- Start SubHeader -->
+    <div class='row sub-header'>
 
+      <div class='col-xs-11'>
+       <ul class='nav nav-tabs main_menu' role='tablist'>
+        <li role='presentation' {% if request.path == '/' %}class="active"{% endif %}><a href='{% url 'test_list' %}'>Головна</a></li>
+        <li role="presentation" {% if '/results' in request.path %}class="active"{% endif %}><a href="{% url "results" %}">Результати</a></li>
+       </ul>
+      </div>
 
-       {% block content %}{% endblock content %}
+   </div>
+    <!-- End SubHeader -->
+{% endif %}
+
+{% block content %}
+  
+{% endblock content %}
 
 
   </div>

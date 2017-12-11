@@ -20,5 +20,7 @@ urlpatterns = [
 
     url(r'^$', views.test_list, name='test_list'),
     url(r'^test/(?P<pk>\d+)/one/', views.one_test, name='one_test'),
+    url(r'^', views.results, name='results'),
+
 
 ]
