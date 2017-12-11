@@ -4,48 +4,65 @@
 
 
 {% block content %}
+<div>
+{% if qn %}
+<p>Кількість питань {{ qn }}</p>
+{% endif %}
+{% if qn %}
+<p>номер питання {{ n }}</p>
+{% endif %}
+</div>
 
 <div class="row col-xs-8 col-xs-offset-2">
 
 </div>
-{{ test.name }}
-{{ ch }}
+<!-- {{ test.name }} -->
+
 </div>
+
 <form action="." method="post" enctype="multipart/form-data"
       role="form" class="form-horizontal">
       {% csrf_token %}
-<!--start tests listing-->
+{{ ch }}
 {% if personal %}
-
-<div class="form-group">
-  <div class="col-sm-10">
-    <input type="text" value="{{ request.POST.name }}"
-    name="name" class="form-control" placeholder='Введіть ваше імя'/>
-     <span class="help-block">{{ errors.name }}</span>
+<div class="question_block_main">
+  <div class="col-xs-6 col-xs-offset-3 person_block">
+    <div class="col-sm-10">
+      <input type="text" value="{{ request.POST.name }}"
+      name="name" class="form-control" placeholder='Введіть ваше імя'/>
+       <span class="help-block">{{ errors.name }}</span>
+    </div>
   </div>
+
+  <div class="col-xs-6 col-xs-offset-3 per_field">
+    <div class="col-sm-10">
+      <input type="text" value="{{ request.POST.surname }}"
+      name="surname" class="form-control" placeholder='Введіть ваше прізвище'/>
+       <span class="help-block">{{ errors.surname }}</span>
+    </div>
+  </div>
+
+  <div class="col-xs-10 col-xs-offset-1 per_field">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+    <input type="submit" value="Далі" name="next"
+      class="btn btn-primary" />
+    </div>
+    </div>
+    <input type="hidden" value="{{ 1 }}"
+      name="count" class="form-control" />
 </div>
-
-<div class="form-group">
-  <div class="col-sm-10">
-    <input type="text" value="{{ request.POST.surname }}"
-    name="surname" class="form-control" placeholder='Введіть ваше прізвище'/>
-     <span class="help-block">{{ errors.surname }}</span>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-sm-2 control-label"></label>
-  <div class="col-sm-10">
-  <input type="submit" value="Додати" name="next"
-    class="btn btn-primary" />
-  </div>
-  </div>
-  <input type="hidden" value="{{ 1 }}"
-    name="count" class="form-control" />
 
 {% else %}
-
-{{ one_test.description}}
+<div class="qn">
+<div class="row col-xs-8 col-xs-offset-2">
+<div class="size_question">
+<div class="row col-xs-8 col-xs-offset-2">
+  <div>
+    {{ one_test.description}}
+  </div>
+</div>
+</div>
 <div class="row col-xs-8 col-xs-offset-2">
     
     <div class="row">
@@ -73,19 +90,18 @@
       name="answers" class="form-control" />
     
 </div>
-<!-- End tests Listing -->
-<div class="form-group">
-  <label class="col-sm-2 control-label"></label>
-  <div class="col-sm-10">
-  <input type="submit" value="Додати" name="next"
+<div class="row col-xs-8 col-xs-offset-2">
+  <label class="control-label"></label>
+  <div>
+  <input type="submit" value="Далі" name="next"
     class="btn btn-primary" />
+</div>
+  </div>
+  <!-- resalt {{ result_test }} -->
+  <!-- {{ name }}
+  {{ surname }} -->
   </div>
   </div>
-  resalt {{ result_test }}
-  Кількість питань{{ qn }}
-  {{ name }}
-  {{ surname }}
-  номер питання {{ n }}
   {% endif %}
 </form>
 

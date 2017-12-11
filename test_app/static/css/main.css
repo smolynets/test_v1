@@ -13,5 +13,26 @@
 
 .question_block_main{
 	margin-top: 30px;
-	margin-left: 100px;
+}
+
+.person_block{
+	margin-top: 18%;
+}
+
+.per_field{
+	margin-top: 18px;
+}
+
+.size_question{
+	font-size: 20pt;
+	margin-bottom: 60px;
+}
+
+.qn{
+	margin-top: 12%;
+}
+
+.finish{
+	margin-top: 20%;
+	font-size: 25pt;
 }

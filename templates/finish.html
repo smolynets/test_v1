@@ -1,3 +1,7 @@
-{{ name }}
-{{ surname }}
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="col-xs-4 col-xs-offset-4 finish">
 Ваш результат {{ result_test }}
+</div>
+{% endblock content %}
