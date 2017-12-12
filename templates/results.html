@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% endif %}
+<div class="block_results col-xs-10 col-xs-offset-1">
+<table class="table">
+
+<thead>
+<tr>
+<th>
+#
+</th>
+<th>
+Імя 
+</th>
+<th>
+Прізвище
+</th>
+<th>
+Бал
+</th>
+<th>
+Обрані варіанти
+</th>
+<th>
+Час створення
+</th>
+</tr>
+</thead>
+
+<tbody>
+{% for rst in results %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ rst.name }}</td>
+<td>{{ rst.surname }}</td>
+<td>{{ rst.rating }}</td>
+<td>{{ rst.choices }}</td>
+<td>{{ rst.tm }}</td>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+
+{% endblock content %}
+
+  
+
+
+  	

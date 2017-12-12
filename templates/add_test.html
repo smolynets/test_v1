@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+
+
+{% block content %}
+<div>
+{% if qn %}
+<p>Кількість питань {{ qn }}</p>
+{% endif %}
+{% if qn %}
+<p>номер питання {{ n }}</p>
+{% endif %}
+</div>
+
+<div class="row col-xs-8 col-xs-offset-2">
+
+</div>
+<!-- {{ test.name }} -->
+
+</div>
+
+<form action="додавання_тесту" method="post" enctype="multipart/form-data"
+      role="form" class="form-horizontal">
+      {% csrf_token %}
+
+<div class="question_block_main">
+  <div class="col-xs-6 col-xs-offset-3 person_block">
+    <div class="col-sm-10">
+      <input type="text" value="{{ request.POST.name }}"
+      name="name" class="form-control" placeholder='Введіть імя тесту'/>
+       <span class="help-block">{{ errors.name }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="row col-xs-8 col-xs-offset-2">
+  <label class="control-label"></label>
+  <div>
+  <input type="submit" value="Далі" name="next"
+    class="btn btn-primary" />
+    <button type="submit" name="cancel_button"
+    class="btn btn-link">Скасувати</button>
+</div>  
+
+</form>
+
+{% endblock content %}
+
+  
+
+
+  	

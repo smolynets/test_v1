@@ -3,6 +3,8 @@
 from django.shortcuts import render
 from .models import Test, Question, Result
 from django.http import HttpResponse
+import datetime
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -124,11 +126,13 @@ def one_test(request, pk):
 						 'name': name, 'surname': surname, 'qn': qn, 
 						 'n': n, 'answers': answers})
 					else:
+						tm = datetime.datetime.now()
 						data = {}
 						data['name'] = name
 						data['surname'] = surname
 						data['rating'] = result_test
 						data['choices'] = answers
+						data['tm'] = tm
 						result = Result(**data)
 						result.save()
 						n = num + 1	
@@ -170,7 +174,38 @@ def one_test(request, pk):
 			'test': test, 'personal': personal})
 
 
-########################333
+########################
+@login_required
 def results(request):
   results = Result.objects.get_queryset().all()
-  return render(request, 'tests_list.html', {'results':results})
+  return render(request, 'results.html', {'results':results})
+
+
+
+
+###########################################################################
+@login_required
+def add_test(request):
+    if request.method == "POST":
+      if request.POST.get('add_button') is not None:
+        errors = {}
+        name = request.POST.get('name', '').strip()
+        if not name:
+          errors['name'] = 'Назва обовязкова!'
+        else:
+          data['name'] = name
+              
+        # save
+        if not errors:
+          test = Test(**data)
+          test.save()
+          return render(request, 'one_test.html',
+          {'test': test})
+        else:
+          return render(request, 'one_test.html',
+          {'test': test,'errors': errors})
+      elif request.POST.get('cancel_button') is not None:
+        return HttpResponseRedirect ( u'%s?status_message=%s'  % 
+        	(reverse('test_list'), "Додавання тесту скасовано!"))
+    else:
+      return render(request, 'add_test.html', {})
