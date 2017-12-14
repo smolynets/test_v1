@@ -139,7 +139,6 @@ def one_test(request, pk):
 						 'name': name, 'surname': surname, 'qn': qn, 
 						 'n': n, 'answers': answers})
 				elif result == 0:
-					tm = datetime.datetime.now()
 					num = int(num) + 1
 					if num + 1 <= qn:
 						n = num + 1
