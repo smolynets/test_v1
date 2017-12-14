@@ -183,12 +183,14 @@ def results(request):
 
 
 
+
 ###########################################################################
 @login_required
 def add_test(request):
     if request.method == "POST":
-      if request.POST.get('add_button') is not None:
+      if request.POST.get('next') is not None:
         errors = {}
+        data = {}
         name = request.POST.get('name', '').strip()
         if not name:
           errors['name'] = 'Назва обовязкова!'
@@ -202,10 +204,10 @@ def add_test(request):
           return render(request, 'one_test.html',
           {'test': test})
         else:
-          return render(request, 'one_test.html',
-          {'test': test,'errors': errors})
+          return render(request, 'add_test.html',
+          {'errors': errors})
       elif request.POST.get('cancel_button') is not None:
         return HttpResponseRedirect ( u'%s?status_message=%s'  % 
         	(reverse('test_list'), "Додавання тесту скасовано!"))
     else:
-      return render(request, 'add_test.html', {})
+    	return render(request, 'add_test.html', {})

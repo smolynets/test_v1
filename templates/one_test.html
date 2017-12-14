@@ -4,106 +4,20 @@
 
 
 {% block content %}
-<div>
-{% if qn %}
-<p>Кількість питань {{ qn }}</p>
-{% endif %}
-{% if qn %}
-<p>номер питання {{ n }}</p>
-{% endif %}
-</div>
 
-<div class="row col-xs-8 col-xs-offset-2">
-
-</div>
-<!-- {{ test.name }} -->
-
-</div>
-
-<form action="." method="post" enctype="multipart/form-data"
-      role="form" class="form-horizontal">
-      {% csrf_token %}
-{{ ch }}
-{% if personal %}
-<div class="question_block_main">
-  <div class="col-xs-6 col-xs-offset-3 person_block">
-    <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.name }}"
-      name="name" class="form-control" placeholder='Введіть ваше імя'/>
-       <span class="help-block">{{ errors.name }}</span>
-    </div>
-  </div>
-
-  <div class="col-xs-6 col-xs-offset-3 per_field">
-    <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.surname }}"
-      name="surname" class="form-control" placeholder='Введіть ваше прізвище'/>
-       <span class="help-block">{{ errors.surname }}</span>
-    </div>
-  </div>
-
-  <div class="col-xs-10 col-xs-offset-1 per_field">
-    <label class="col-sm-2 control-label"></label>
-    <div class="col-sm-10">
-    <input type="submit" value="Далі" name="next"
-      class="btn btn-primary" />
-    </div>
-    </div>
-    <input type="hidden" value="{{ 1 }}"
-      name="count" class="form-control" />
-</div>
-
-{% else %}
-<div class="qn">
-<div class="row col-xs-8 col-xs-offset-2">
-<div class="size_question">
-<div class="row col-xs-8 col-xs-offset-2">
+<div class="row col-xs-6 col-xs-offset-3 one_test">
   <div>
-    {{ one_test.description}}
+    <h2 class="one_test_main">Тест {{ test.name }} додано! 
+    <a>Додати питання?</a></h2>
   </div>
 </div>
-</div>
-<div class="row col-xs-8 col-xs-offset-2">
-    
-    <div class="row">
-        <p class="size"><input type="checkbox" name="1a" value="a"> {{ one_test.version_a}}</p>
-    </div>
-    <div class="row">
-        <p class="size"><input type="checkbox" name="1b" value="b"> {{ one_test.version_b}}</p>
-    </div>
-    <div class="row">
-        <p class="size"><input type="checkbox" name="1c" value="c"> {{ one_test.version_c}}</p>
-    </div>
-    <div class="row">
-        <p class="size"><input type="checkbox" name="1d" value="d"> {{ one_test.version_d}}</p>
-    </div>
-    
-    <input type="hidden" value="{{ num }}"
-      name="test_num" class="form-control" />
-    <input type="hidden" value="{{ result_test }}"
-      name="result_test" class="form-control" />
-      <input type="hidden" value="{{ name }}"
-      name="name" class="form-control" />
-      <input type="hidden" value="{{ surname }}"
-      name="surname" class="form-control" />
-      <input type="hidden" value="{{ answers }}"
-      name="answers" class="form-control" />
-    
-</div>
-<div class="row col-xs-8 col-xs-offset-2">
-  <label class="control-label"></label>
+<div class="row col-xs-6 col-xs-offset-3">
   <div>
-  <input type="submit" value="Далі" name="next"
-    class="btn btn-primary" />
+    <h2 class="one_test_main"><a>На головну?</a></h2>
+  </div>
 </div>
-  </div>
-  <!-- resalt {{ result_test }} -->
-  <!-- {{ name }}
-  {{ surname }} -->
-  </div>
-  </div>
-  {% endif %}
-</form>
+
+
 
 {% endblock content %}
 
