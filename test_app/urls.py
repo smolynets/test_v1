@@ -23,5 +23,4 @@ urlpatterns = [
     url(r'^результати', views.results, name='results'),
     url(r'^додавання_тесту', views.add_test, name='add_test'),
 
-
 ]
