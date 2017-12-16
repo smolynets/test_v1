@@ -17,5 +17,9 @@ urlpatterns = [
     	name='auth_logout'),
     url(r'^users/', include('registration.backends.simple.urls',
         namespace='users')),
+    url(r'^login/$', auth_views.LoginView.as_view(
+        template_name='registration/login.html'),
+        name='auth_login'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

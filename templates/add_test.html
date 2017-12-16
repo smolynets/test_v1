@@ -20,16 +20,17 @@
 
 </div>
 {% if test %}
+<div class="col-xs-8 col-xs-offset-2">
+  Кількість питань в тесті {{ num_qn }}
+</div>
+<span class="help-block">{{ new }}</span>
 <form action="додавання_тесту" method="post" enctype="multipart/form-data"
       role="form" class="form-horizontal add_qu_form">
       {% csrf_token %}
-<div class="col-xs-8 col-xs-offset-2">      
-  {{ test.name }}
-</div>  
 <div>
   <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.description }}"
+      <input type="text" value=""
       name="description" class="form-control" placeholder='Введіть питання'/>
        <span class="help-block">{{ errors.description }}</span>
     </div>
@@ -38,7 +39,7 @@
 <div>
   <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.version_a }}"
+      <input type="text" value=""
       name="version_a" class="form-control" placeholder='Введіть варіант A'/>
        <span class="help-block">{{ errors.version_a }}</span>
     </div>
@@ -47,7 +48,7 @@
 <div>
   <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.version_a }}"
+      <input type="text" value=""
       name="version_b" class="form-control" placeholder='Введіть варіант B'/>
        <span class="help-block">{{ errors.version_b }}</span>
     </div>
@@ -56,7 +57,7 @@
 <div>
   <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.version_c }}"
+      <input type="text" value=""
       name="version_c" class="form-control" placeholder='Введіть варіант C'/>
        <span class="help-block">{{ errors.version_c }}</span>
     </div>
@@ -65,7 +66,7 @@
 <div>
 <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.version_d }}"
+      <input type="text" value=""
       name="version_d" class="form-control" placeholder='Введіть варіант D'/>
        <span class="help-block">{{ errors.version_d }}</span>
     </div>
@@ -73,7 +74,7 @@
 </div>
 <div class="col-xs-8 col-xs-offset-2">
     <div class="col-sm-10">
-      <input type="text" value="{{ request.POST.true }}"
+      <input type="text" value=""
       name="true" class="form-control" placeholder='Введіть правильний варіант(Лише літеру від A до D)'/>
        <span class="help-block">{{ errors.true }}</span>
     </div>
@@ -85,8 +86,6 @@
   <div>
   <input type="submit" value="Нове питання" name="next"
     class="btn btn-primary" />
-  <button type="submit" name="cancel_button"
-    class="btn btn-link">Скасувати</button>
 </div>
 <input type="hidden" value="{{ test }}"
       name="test" class="form-control" />  
@@ -112,8 +111,6 @@
   <div>
   <input type="submit" value="Далі" name="next"
     class="btn btn-primary" />
-    <button type="submit" name="cancel_button"
-    class="btn btn-link">Скасувати</button>
 </div>  
 
 </form>

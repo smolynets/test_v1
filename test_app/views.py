@@ -197,14 +197,13 @@ def add_test(request):
 		        if not name:
 		        	errors['name'] = 'Назва обовязкова!'   
 		        else:
-		        	data['name'] = name
-		              
+		        	data['name'] = name		              
 		        # save
 		        if not errors:
 		        	test = Test(**data)
 		        	test.save()
 		        	return render(request, 'add_test.html',
-		        	{'test': test, 'test': test})
+		        	{'test': test})
 		        else:
 		        	return render(request, 'add_test.html',
 		        	{'errors': errors, 'test': test})
@@ -242,63 +241,20 @@ def add_test(request):
     				errors['true'] = 'Назва обовязкова!'
     			else:
     				data['true'] = true
+    			test1 = Test.objects.get(name=test)	
+    			data['test'] = test1
     			# save
     			if not errors:
     				qn = Question(**data)
     				qn.save()
+    				num_qn = len(Question.objects.get_queryset().all())
+    				new = 'Нове питання додано!'
     				return render(request, 'add_test.html',
-	 	          		{'test': test})
+	 	          		{'test': test, 'new': new, 'num_qn': num_qn})
     			else:
+    				num_qn = len(Question.objects.get_queryset().all())
     				return render(request, 'add_test.html',
-	 	          		{'test': test, 'errors': errors})			              	      	
+	 	          		{'test': test, 'errors': errors,
+	 	          		'num_qn': num_qn})			              	      	
     else:
     	return render(request, 'add_test.html', {})
-
-
-# ######################################################
-
-# def add_question(request, pk):
-# 	st = Test.objects.get(pk=pk)
-# 	test = st
-# 	if request.method == "POST":
-# 		if request.POST.get('next') is not None:
-# 			errors = {}
-# 			data = {}
-# 			description = request.POST.get('description', '').strip()
-# 			if not description:
-# 				errors['description'] = 'Назва обовязкова!'
-# 			else:
-# 				data['name'] = name
-# 			version_a = request.POST.get('version_a', '').strip()
-# 			if not version_a:
-# 				errors['version_a'] = 'Назва обовязкова!'
-# 			else:	
-# 				data['version_a'] = version_a 
-# 			version_b = request.POST.get('version_b', '').strip()
-# 			if not version_b:
-# 				errors['version_b'] = 'Назва обовязкова!'
-# 			else:
-# 				data['version_b'] = version_b
-# 			version_c = request.POST.get('version_c', '').strip()
-# 			if not version_c:
-# 				errors['version_c'] = 'Назва обовязкова!'
-# 			else:
-# 				data['version_c'] = version_c
-# 			version_d = request.POST.get('version_d', '').strip()
-# 			if not version_d:
-# 				errors['version_d'] = 'Назва обовязкова!'
-# 			else:
-# 				data['version_d'] = version_d
-# 			true = request.POST.get('true', '').strip()
-# 			if not true:
-# 				errors['true'] = 'Назва обовязкова!'
-# 			else:
-# 				data['true'] = true
-# 			# save
-# 			if not errors:
-# 				qn = Question(**data)
-# 				qn.save()
-# 				return render(request, 'one_question.html',
-# 	          		{'test': test})
-# 	else:
-# 		return render(request, 'one_question.html', {'test': test})       	  			

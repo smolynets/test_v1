@@ -16,15 +16,11 @@
 
 
 {% if user.is_authenticated %}
-  <!-- <div class='col-md-3 registration'>
-     {% if user.is_authenticated %}
-        <a href='{% url 'users:auth_logout' %}'>{% trans "Вийти" %}</a>
-     {% else %}
-        <a href='{% url 'users:auth_login' %}'>{% trans "Ввійти" %}</a>
-        |
-        <a href='{% url "users:registration_register" %}'>{% trans "Зареєструватися" %}</a>
-     {% endif %}
-   </div> -->
+<div class='col-md-3 registration'>
+  {% if user.is_authenticated %}
+     <a href='{% url 'users:auth_logout' %}'>Вийти</a>
+  {% endif %}
+</div>
    <!-- Start SubHeader -->
     <div class='row sub-header'>
 
