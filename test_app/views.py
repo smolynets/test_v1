@@ -126,11 +126,13 @@ def one_test(request, pk):
 						 'name': name, 'surname': surname, 'qn': qn, 
 						 'n': n, 'answers': answers})
 					else:
+						tm = datetime.datetime.now()
 						data = {}
 						data['name'] = name
 						data['surname'] = surname
 						data['rating'] = result_test
 						data['choices'] = answers
+						data['tm'] = tm
 						result = Result(**data)
 						result.save()
 						n = num + 1	
