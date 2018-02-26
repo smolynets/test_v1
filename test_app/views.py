@@ -242,7 +242,7 @@ def add_test(request):
     			if not true:
     				errors['true'] = 'Назва обовязкова!'
     			else:
-    				data['true'] = true
+    				data['true'] = str(true)
     			test1 = Test.objects.get(name=test)	
     			data['test'] = test1
     			# save
