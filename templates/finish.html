@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% block content %}
+<a class='btn btn-primary btn1' href='{% url "test_list" %}'>Повернутися до списку тестів</a>
 <div class="col-xs-4 col-xs-offset-4 finish">
 Ваш результат {{ result_test }}
 </div>
