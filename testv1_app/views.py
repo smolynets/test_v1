@@ -133,6 +133,7 @@ def one_test(request, pk):
 						data['rating'] = result_test
 						data['choices'] = answers
 						data['tm'] = tm
+						data['test_owner'] = test.name
 						result = Result(**data)
 						result.save()
 						n = num + 1	
@@ -158,6 +159,7 @@ def one_test(request, pk):
 						data['rating'] = result_test
 						data['choices'] = answers
 						data['tm'] = tm
+						data['test_owner'] = test.name
 						result = Result(**data)
 						result.save()
 						n = num + 1	
@@ -242,7 +244,7 @@ def add_test(request):
     			if not true:
     				errors['true'] = 'Назва обовязкова!'
     			else:
-    				data['true'] = str(true)
+    				data['true'] = true
     			test1 = Test.objects.get(name=test)	
     			data['test'] = test1
     			# save
